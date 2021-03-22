@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+  // Backtic
+  function sayHello(name, age){
+   return `hello ${name} you are ${age} years old`;
+  // return console.log(`hello ${name} you are ${age} years old`);
+  // console.log(`hello ${name} you are ${age} years old`);
+  }
+  const greetSteve = sayHello("Steve", 22);
+  console.log(greetSteve);
+  
+  const calculator = {
+    plus : function(a, b){ // 객체 안의 함수는 메소드라고 지칭
+      return a + b;
+    },
+    multiply : function(a, b){ // 객체 안의 함수는 메소드라고 지칭
+      return a * b;
+    },
+    minus : function(a, b){ // 객체 안의 함수는 메소드라고 지칭
+      return a - b;
+    },
+    divide : function(a, b){ // 객체 안의 함수는 메소드라고 지칭
+      return a / b;
+    }
+  }
+const plus = calculator.plus(5,5); //10
+const multiply = calculator.multiply(5,5);//25
+const minus = calculator.minus(5,5);//0
+const divide = calculator.divide(5,5);//1
+
+console.log(plus, multiply, minus, divide);
+  // console.log() 객체.함수()
+  // calculator.plus() 객체.함수()
+  // 곱, 빼기, 나누기
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+      font-size: 40px;
+      /* display: inline-block; */
+      background-color: yellow;
+    }
+
+    .menu {
+      display: flex;
+
+      background-color: yellowgreen;
+    }
+
+    .menu-link {
+      background-color: blue;
+      color: white;
+      margin: .1em;
+      padding: .3em;
+      text-decoration: none;
+      /*밑줄 없애기 */
+      list-style: none;
+    }
+
+    .menu-active {
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="main-title">
+    Event
+  </h1>
+
+  <nav class="menu">
+    <a href="#" class="menu-link" data-menu="1">menu 1</a>
+    <a href="#" class="menu-link" data-menu="2">menu 2</a>
+    <a href="#" class="menu-link" data-menu="3">menu 3</a>
+  </nav>
+
+  <script>
+    var currentMenu;
+    var menu = document.querySelector('.menu');
+
+    function activate(elem) {
+      elem.classList.add('menu-active'); // 여긴 왜 elem.target이 아닌걸까
+      currentMenu = elem;
+    }
+
+    function inactivate(elem) {
+      elem.classList.remove('menu-active'); // 여긴 왜 elem.target이 아닌걸까
+    }
+
+    function clickHandler(e) { // 이벤트 함수
+      // 핸들러 함수는 최대한 심플하게
+      // 코드 자체만으로 봤을 땐 더 길어보이지만 구조적으로 좋은 코드
+      if (currentMenu) {
+        inactivate(currentMenu);
+      }
+      activate(e.target);// 여긴 e.target 이네  54, 59번줄 비교
+      
+    }
+    menu.addEventListener('click', clickHandler);
+    // 함수를 기능별로 분리해놓으면 따로 호출할 수 있는 장점이 생김
+    //ex) 메뉴1번 켜져있는 상태로 페이지 로드 해달라
+    activate(document.querySelectorAll('.menu-link')[2]);
+   // 코드를 리팩토링 한다.
+
+  </script>
+
+
+</body>
+
+</html>

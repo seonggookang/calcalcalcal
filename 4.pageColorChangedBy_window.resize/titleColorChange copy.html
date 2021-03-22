@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h2{
+      
+      color :blue;
+    }
+    body{
+      background-color: rgb(199, 159, 119);  
+    }
+  </style>
+
+</head>
+<body>
+  <h2>This is title</h2>
+
+  <script>
+    const title = document.querySelector('h2');
+
+    function handleClick() {
+      const currentColor = title.style.color;
+      if(currentColor == 'red'){
+        title.style.color = 'blue';
+      } else{
+        title.style.color = 'red';
+      }
+    }
+
+    function init() {
+      title.style.color = 'red'; // 이런 꾸미는걸 js에서 하지말고 css에서 하라.
+      title.addEventListener('click', handleClick);
+    }
+    init();
+  </script>
+</body>
+</html>

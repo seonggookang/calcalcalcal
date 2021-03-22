@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>menuButton</title>
+  <style>
+    h1 {
+      font-size: 40px;
+      /* display: inline-block; */
+      background-color: yellow;
+    }
+
+    .menu {
+      display: flex;
+    }
+
+    .menu-link {
+      background-color: blue;
+      color: white;
+      margin: .1em;
+      padding: .3em;
+      text-decoration: none;
+      /*밑줄 없애기 */
+      list-style: none;
+    }
+
+    .menu-active {
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="main-title">
+    Event
+  </h1>
+
+  <nav class="menu">
+    <a href="#" class="menu-link" data-menu="1">menu 1</a>
+    <a href="#" class="menu-link" data-menu="2">menu 2</a>
+    <a href="#" class="menu-link" data-menu="3">menu 3</a>
+  </nav>
+
+  <script>
+    // 이벤트 리스너/핸들러 
+    // 함수와 굉장히 비슷하게 생김. 구분 위해 뒤에 Handler붙여줌
+
+    //   //================= (방법1) ===============
+    //  var menuLinks = document.querySelectorAll('.menu-link');
+    //  function clickMenuHandler() {
+    //   for(var i = 0; i < menuLinks.length ; i++){
+    //     // 일단 싹다 돌면서 지워주는 코드
+    //     // *jquery는 for문이 없어도 내부적으로 자동으로 돌아줌
+    //     // 이 for문의 단점. 간단한 페이지에선 금방돌지만 계속 쓸때없이 포문을  돌아줘야한다는 단점
+    //     menuLinks[i].classList.remove('menu-active');
+    //   }
+    //   var activeMenu = document.querySelector('.menu-active');
+    //   this.classList.add('menu-active');
+    // }
+
+    //// ================= (방법2) ===============
+    // var menuLinks = document.querySelectorAll('.menu-link');
+    // function clickMenuHandler() {
+    //    // 방법 2) menu-active를 찾아서 지워줌
+    //   // 단점 :  1줄로 썻다한들  돔 스크립트 속도가 많이 느린편
+    //   // 아무튼 .menu-active를 다 찾아야되는 번거로움
+    //   // js 여러개 중 하나를 활성하는것을 개발할 때 
+    //   // dom을 조작할 때만 쓸 수 있는 좁은 범용성
+    //   var activeMenu = document.querySelector('.menu-active');
+    //   if(activeMenu){
+    //     activeMenu.classList.remove('menu-active');
+    //   }
+    //   this.classList.add('menu-active');
+    // }
+
+    //   //================= (방법3) ===============
+    //   밑에 할 방법의 장점
+    // 1. DOM에 의존적이지 않다. 2. 연산에 효율적이다. 딱 그 부분만 찾을 것이기 때문에 
+
+    /*var currentMenu의 1번 위치 */   
+    var currentMenu; /*전역변수임*/
+    function clickMenuHandler() {
+      //var currentMenu의 2번 위치
+      // 함수안에 변수 선언을 함으로써 currentMenu안에는 아무것도 없는 셈이 된것. 그래서 밑줄 코드가 실행이 안됨.
+      if (currentMenu) { // 뜻 : currentMenu 값이 있다면
+        currentMenu.classList.remove('menu-active');
+      }
+      this.classList.add('menu-active'); // 클릭을 실행한 코드의 객체가 this로.
+      currentMenu = this;
+    }
+    var menuLinks = document.querySelectorAll('.menu-link');
+    for (var i = 0; i < menuLinks.length; i++) {
+      menuLinks[i].addEventListener('click', clickMenuHandler);
+    }
+  </script>
+</body>
+
+</html>

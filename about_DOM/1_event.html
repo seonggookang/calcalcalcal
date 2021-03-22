@@ -1,0 +1,87 @@
+<!-- // 이벤트 : 정적인게 갑자기 동적으로 발생.대표적으로 클릭
+// 마우스: 움직이기. 더블클릭, 마우스의 휠, 클릭 눌렀을때 누른걸 땟을때.
+// 스마트폰 터치, 데이터 로드가 끝났을 때. 사이즈가 바꼈을때.
+// 클릭 이벤트!!
+//도라에몽 눈돌리는 js //1분코딩 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+      font-size: 40px;
+      /* display: inline-block; */
+    }
+    #main-title{
+      background-color: yellow;
+    }
+
+    .ilbuni {
+      list-style: none;
+      display: inline-block;
+    }
+
+    .ilbuni img {
+      width: 100px;
+    }
+
+    .link-google {
+      color: red;
+    }
+
+    .special {
+      background: pink;
+    }
+
+    .btn {
+      font-size: 2rem;
+      /*32px, 1rem = 16px */
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="main-title">
+    Event
+  </h1>
+  <ul class="ilbuni-mom">
+    <li class="ilbuni">
+      <img src="1.jpg">
+      <a class="link-google" href="https://google.com">Google</a>
+    </li>
+    <li class="ilbuni"><img src="2.jpg" alt=""></li>
+    <li class="ilbuni"><img src="3.jpg" alt=""></li>
+  </ul>
+
+
+  <button class="btn">클릭하세요!</button>
+  <script>
+    var btn = document.querySelector('.btn');
+    var mainTitle = document.querySelector('#main-title');
+    function btnClickHandler() {
+      if (mainTitle.style.background == 'yellow')// 색깔은 따옴표로 감싸라
+         mainTitle.style.background = 'dodgerblue';
+         // return 이 없어도 작동은 하네
+      else 
+         mainTitle.style.background = 'yellow';
+      
+      //js에서 직접 색깔 바꿔보기
+      //  mainTitle.style.background = 'dodgerblue';  // style이라는 객체임  
+    }
+    // 만든 객체의 속성인 addeventlistener 실행
+    // btn.onclick = btnClickHandler; 간단하지만 사용할 수 있는 기능이 적다 
+    // ex) 클릭했을때 지정할 수 있는 함수가 하나이다.
+    // * =을 이용하여 속성으로 넣어주는것이기 때문에 여러개 할 수가 없음
+    btn.addEventListener('click', (btnClickHandler));
+    //*이런식으로 포함해줄수가있지만( onclick 과 비교하는중)
+    // 1번째 인자 : 이벤트 이름
+    // 2번째 인자 : 실행시킬 함수
+
+  </script>
+</body>
+
+</html>

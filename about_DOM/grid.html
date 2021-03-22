@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .Box{
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      grid-auto-rows: 100px 150px 150px 150px;
+      grid-gap: 10px;
+      
+    }
+    .box{
+      padding: 35px;
+      
+      border: 3px solid black;
+      background: orange;
+      text-align: center;
+      /* 복수의 block 요소는 기본적으로 수직 정렬된다. 이것을 수평정렬하기 위해서는 정렬 대상 block 요소를 inline-block 요소로 변경한 후 부모 요소에 text-align: center;를 지정한다.
+
+정렬 대상 요소에 width를 지정하지 않으면 콘텐츠에 너비에 맞추어 너비가 결정되므로 명시적으로 너비를 지정한다. */
+    }
+    .box1{
+      grid-column:1/3;
+      grid-row:1;
+    }
+    .box2{      
+      /* padding-top: 60px; */
+      grid-column:1;
+      grid-row:2;
+    }
+    .box3{
+      /* padding-top: 200px; */
+      grid-column:2;
+      grid-row:2/5;
+    }
+    .box4{
+      /* padding-top: 60px; */
+      grid-column:1;
+      grid-row:3;
+    }
+    .box5{
+      /* padding-top: 60px; */
+      grid-column:1;
+      grid-row:4;
+    }
+  </style>
+
+  <div class="Box">
+    <div class="box box1">1</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+    <div class="box box4">4</div>
+    <div class="box box5">5</div>
+  </div>
+</body>
+</html>

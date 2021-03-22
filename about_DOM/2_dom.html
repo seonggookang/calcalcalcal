@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+  <style>
+    body{
+      font-size:3rem;
+    }
+    h1{
+      background-color: #fff000;
+    }
+  </style>
+  <script>// head 안에 쓸 때는 다 load될 때까지 기다려야한다.
+    // window : 전역객체(전영역 아우름)
+    // onload :  event 중에 하나
+    window.onload = function(){// 옛날 스타일임.속성으로 함수를 할당한 케이스  //전체 문서가 로드 되면 이 함수를 실행 해주세요
+    // 바디 안의 텍스드들 읽을 때까지 기다리는코드
+      var title = document.getElementById('main-title');
+      console.log(title);
+    }
+    // load : 전체 내용이 다 로드 될때까지 기다림
+    // DOMcontentloaded : 태그 <img> 등등만 로드 되면 실행(load보다 더 낫다)
+    // <img src="image/foo.jpg"> src안의 내용은 안가져더오더라도 img태그만 인식되면 실행
+
+    // 요즘 스타일
+    // 윈도우 객체가 가진 메소드인 addEventListener실행
+    // 1 번째 매개변수: 이벤트이름이 문자열 형식으로 들어감
+    // 2 번째 매개변수: 이벤트가 진행되면 실행할 함수
+    // 3 번째 매개변수: 이벤트 버블링에 관련된것(defalut: false(보통생략해줌))나중에..
+    
+    // 전체 내용이 다 로드 될때까지 기다림
+    // window객체의 메소드를 실행
+    // window.addEventListener('load', function(){ (위 onload 코드와 동일 작동)
+    //   var title = document.getElementById('main-title');
+    //   console.log(title);
+    // });
+
+    // DOM의 Content만 로드될때까지 기다리고 실행
+    // 태그 객체들만 기다림
+    // ex) <img src="image/foo.jpg"> img태그만 로드, 안쪽의 이미지는 기다리지 않음
+    // window.addEventListener('DOMContentLoaded', function(){
+    //   var title = document.getElementById('main-title');
+    //   console.log(title); //null 뜸
+    // });
+
+    // --jquery 맛보기--(1분 코딩님은 안쓰는기술)
+    // 문서가 로드 될때가지 기다린 후 실행
+    // 큰 데이터 모두 로드 될때까지 기다리는게 아님
+    // $(document).ready(function(){// jquery에서 안쓰겠다고 공식화함
+//deprecated
+    // });
+    // $(function(){ <<-- 얘가 쓰이고 있음
+    
+    // });
+  </script>
+</head>
+
+<body>
+  <h1 id="main-title">
+    <span>hello 1</span>
+    <span>hello 2</span>
+    <span>hello 3</span>
+    Document Object Model
+  </h1>
+  <article>
+    <header class="main-header">header</header>
+    <section>
+    <header>s header</header>
+      section 1
+    </section>
+    <section>
+    <header>s header</header>
+      section 2
+    </section>
+  </article>
+  
+  <!--밑줄 코드에선 로드 이벤트같은것이 필요없다. 왜?
+  순서상으로 문서를 읽었기 때문에. 위에 'main-title'이 있다. 불러올 시점에 불러올 것을 이미 읽은 상태-->
+  
+  <!--스크립트는 보통 body태그 끝나기 바로 직전에 넣는 이유 !!!
+  head 안에 넣으면 스크립트를 읽는동안 html로드가 안된다.-> 사용자 입장에서 답답 눈에 안보이니까(js는 눈에 보이는게 아님)
+  태그들을 먼저 읽게 되면 화면에 바로 뿌려지게 되는데에 반해 스크립트가 head안에 있으면 스크립트를 읽는 동안 바디 안의 태그들을 읽지 않고 있다.-->
+  <script> //document 객체가 가진 메소드중 getElementById 호출
+    var title = document.getElementById('main-title');
+    // id의 경우 문성 딱 하나 쓸수 있기 때문에 단수형으로.
+    var titleSpan = title.getElementsByTagName('span');
+    // 태그 여러개 올수 있다. 복수형으로
+    console.log(titleSpan[2]);//배열과 비슷한 형태로 리턴(인덱스와 length)
+    // 인덱스로 호출
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>addEventListener,removeEventListener</title>
+</head>
+<body>
+    <h1 id="s1">
+      change color
+    </h1>
+    마우스만 올려도 색깔 바뀌는 버튼:<br/>
+    <button id="green">green</button>
+    <button id="red">red</button><br/>
+    <button id="btnExample">한번만 메세지 띄우는 버튼</button>
+    <script type="text/javascript">
+      var color1;
+      var color2;
+      var btnExample;
+
+      window.onload = function () { //다르게 대체 할수 있는 코드?
+        color1.addEventListener("mouseover", changecolor1);
+      color2.addEventListener("mouseover", changecolor2);
+      btnExample.addEventListener("click", btnExampleClickHandler);
+      }
+      function changecolor1(){
+          s1.style.color = 'green';
+      }
+      function changecolor2() {
+          s1.style.color = 'red';
+      }
+      function btnExampleClickHandler() {
+          alert("메세지입니다. 저는 다시는 보이지 않습니다.");
+          btnExample.removeEventListener("click", btnExampleClickHandler);
+      }
+      color1 = document.getElementById("green");
+      color2 = document.getElementById("red");
+      btnExample = document.getElementById("btnExample");
+
+      
+  </script>
+</body>
+</html>

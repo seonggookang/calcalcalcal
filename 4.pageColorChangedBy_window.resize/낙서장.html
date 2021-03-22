@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .foo {
+      color: red
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id='ex' class='foo'>안녕하세요</div>
+  <input type='button' value='클래스 토글(Toggle)' onclick='toggleClass()'/>
+
+  <script>
+    let cnt = 0;
+    function toggleClass() {
+      // console.log(cnt);
+      cnt++;
+      // console.log(cnt);
+      document.getElementById('ex').classList.toggle('foo', cnt % 3 === 0);
+      //조건 참이면 무조건 추가, 거짓이면 삭제
+      // console.log(cnt);
+    }
+    // console.log(cnt);
+  </script>
+</body>
+
+</html>

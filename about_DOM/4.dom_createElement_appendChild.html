@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1{
+      font-size: 20px;
+      display: inline-block;
+      background-color: yellow;
+    }
+    .ilbuni{
+      list-style: none;
+       display: inline-block;
+    }
+    .ilbuni img{
+      width: 100px;
+    }
+    .link-google{
+      color: red ;
+    }
+    .special{
+      background : pink;
+    }
+
+  </style>
+</head>
+<body>
+  <h1 id="main-title">
+    DOM (Document Object Model)
+    <small>small</small>
+  </h1> 
+  <ul class="ilbuni-mom">
+    <li class="ilbuni">
+      <a class="link-google" href="https://google.com">Google</a>
+    </li>
+    <li class="ilbuni"><img src="2.jpg" alt=""></li>
+    <li class="ilbuni"><img src="3.jpg" alt=""></li>
+  </ul>
+
+  <script>
+    var link = document.querySelector('.ilbuni a');
+    // link.className = 'special';//className: 속성임. 그것의 값으로 special을 넣어버린거, 요새 잘   안씀
+    link.classList.add('special','foo');
+    //class 들에 관련된 기능들을 가지고 있는객체
+    // 내가 원하는것만 추가 삭제(className은 이제 잘 안씀)
+    //원하는 클래스 추가는 콤마로 구분함
+
+    setTimeout(function(){// 2초 뒤 행하라는 함수
+      link.classList.remove('link-google');//삭제
+    },2000);
+    console.log( link.classList.contains('special'));
+    //boolean 값 리턴( 해당 값 유무에 따라)
+    // true, false
+    
+    
+    
+    var ilbuniMom = document.querySelector('.ilbuni-mom');
+    //li값을 추가해보겠음
+    var listElem = document.createElement('li');
+    // listElem.innerHTML('<span>안뇽</span>');//괄호 쓰면 안됨이건 함수가 아님
+    listElem.innerHTML = '<span>안뇽</span>'
+    //자리 조정해줘야함.부모를 가져와서 넣어줘야함
+    ilbuniMom.appendChild(listElem);
+    console.log(ilbuniMom);
+    // 어떤 내용이 첨부터 있는게 아니라 데이터를 읽고 나서 나중에 추가될때 사용됨
+
+    // 안보고 외워서 할 수 있게 해야함
+  </script>
+</body>
+</html>

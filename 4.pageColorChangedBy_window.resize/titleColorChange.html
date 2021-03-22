@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h2{
+      color :blue;
+    }
+    body{
+      background-color: rgb(199, 159, 119);  
+    }
+  </style>
+
+</head>
+<body>
+  <h2>This is title</h2>
+
+  <script>
+    const titleColor = document.querySelector('h2');
+
+    function clickHandler(){
+      if(titleColor.style.color == 'blue'){
+        titleColor.style.color = 'red';
+      }else{
+        titleColor.style.color = 'blue';
+      }
+    }
+    titleColor.addEventListener('click', clickHandler);
+
+    
+  </script>
+</body>
+</html>

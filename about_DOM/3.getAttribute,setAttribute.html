@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+      font-size: 20px;
+      display: inline-block;
+      background-color: yellow;
+    }
+
+    .ilbuni {
+      list-style: none;
+      display: inline-block;
+      /* inline vs inline-block 차이 */
+    }
+
+    .ilbuni img {
+      width: 100px;
+    }
+
+    .special {
+      background: pink;
+    }
+
+    /* li{ /*불릿 없애기 bullet
+      list-style: none;
+      //예외) 밑줄 없애기 text-decoration : none;
+    } */
+  </style>
+
+</head>
+
+<body>
+  <h1 id="main-title">
+    DOM (Document Object Model)
+    <small>small</small>
+  </h1>
+  <ul>
+    <li class="ilbuni">
+      <img src="1.jpg">
+      <a class="link-google" href="https://google.com">Google</a>
+    </li>
+    <li class="ilbuni"><img src="2.jpg" alt=""></li>
+    <li class="ilbuni"><img src="3.jpg" alt=""></li>
+  </ul>
+  <script>
+    // document.querySelector의 순수 JS의 막강한 기능 때문에 
+    // getElementsById or getElementsByTagName안씀!!
+    // queryselector/all -> css선택자를 사용하므로 더 편하다
+    // 제이커리 리턴하는 객체와는 다름
+    // var mainTitle = document.querySelector('#main-title small');
+    // var ilbun1 = document.querySelector('.ilbuni');
+    // 공통점:  인덱스 & 값 구성임
+    // var an = document.getElementsByClassName('ilbuni');//HTMLCollection 으로 리턴
+    var ilbuni = document.querySelectorAll('.ilbuni'); // NodeList 로 리턴
+    // jquery 라이브러리는 포문도 돌필요가 없다. 내부적으로 알아서 해줌(실무에서 리액트 같은 것을 사용하면 편하지.하지만 밑바닥인 vanilla js를 알고 있어야함)
+
+    // for(var i=0 ; i < ilbuni.length ; i++){
+    //  ilbuni[i].style.border = '3px solid red';  
+    // }
+    // 속성의 값을 셋팅하거나 얻어오는거( get, set느낌이 팍 나는구만)
+    var link = document.querySelector('.ilbuni a');
+    // link 객체가 가지고 있는 메서드쓸거
+    // a링크 줄 전체 다가져오느느게 아니라 링크주소만 딱 가져오고 싶다 할 때(getAttribute).
+    //  그 주소를 다른거로 바꾸고 싶다 할때(setAttribute)
+    console.log(link.getAttribute('class')); // link-google 반환
+    console.log(link.getAttribute('href')); // https://google.com 반환
+    //리턴값이 있으니까 출력할게 있는것임, 없었다면 undefined가 출력됐을것.
+
+    link.setAttribute('href', 'https://www.naver.com')
+    // 리턴값 없음. href 의 값을 변경해줄뿐.값을 얻어오는 용도가 아님
+    // 첫번째 인자 속성가져오고 두번째인자에 할당할 값
+    console.log(link.getAttribute('href'));
+    // 실용예.
+    //json 같은데에서 뭔갈 받아와서 거기에 있는 정보를 이용해서 html값을 쫙 셋팅해줌
+    console.log(link.setAttribute('href', 'https://www.naver.com'));//undefined
+
+    //원하는 곳에 class 삽입 
+
+  </script>
+</body>
+
+</html>

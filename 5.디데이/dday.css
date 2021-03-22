@@ -1,0 +1,16 @@
+h1{
+  /*이걸 center 단어 이용하는 방법 */
+  /* padding-left:700px;  */
+  /* margin: 0; */
+   font-size: 35px;
+}
+body{
+  background-color : peru;
+}
+.form{
+  display : none;
+}
+
+.showing{
+  display : block;
+}
